@@ -6,6 +6,6 @@
         - [ ] extension configuration
         - [ ] save in storage.local (if available)
         - [ ] snippets store per site/domain (if in extension mode)
-
+        - [ ] publish in chrome store
     - Fixes
         - [ ] Limit the number of lines in the preview 
