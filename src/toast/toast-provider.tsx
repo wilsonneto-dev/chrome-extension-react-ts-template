@@ -1,4 +1,4 @@
-import React, {createContext, PropsWithChildren, useContext, useState} from 'react'
+import {createContext, PropsWithChildren, useContext, useState} from 'react'
 import Message, {MessageType} from "./models/message.ts"
 import {ToastsWrapper} from "./components/toast/toast.tsx"
 

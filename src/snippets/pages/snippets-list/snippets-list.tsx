@@ -9,14 +9,13 @@ import IconEdit from "../../icons/icon-edit.tsx";
 import IconDelete from "../../icons/icon-delete.tsx";
 
 import styles from './styles.module.scss'
-import {Link, useNavigate, useRoutes} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function SnippetsList() {
   const snippets = useSnippetsStore(state => state.snippets);
 
   const [searchText, setSearchText] = useState("")
-  const [filteredSnippets, setFilteredSnippets] = useState([])
-  const { showToast } = useToast();
+  const [filteredSnippets, setFilteredSnippets] = useState<Snippet[]>([])
 
   useEffect(() => {
     const searchTextLower = searchText.toLowerCase();
@@ -42,7 +41,7 @@ export default function SnippetsList() {
   )
 }
 
-function List({ snippets, searchText }: { snippets: Snippet[] }) {
+function List({ snippets }: { snippets: Snippet[] }) {
   if(snippets.length == 0)
     return <NotFoundMessage />
 
@@ -73,7 +72,7 @@ function Card({ snippet }: { snippet: Snippet }) {
     <p>{snippet.content}</p>
 
     <div className={styles.actionLayer}>
-      <button className={styles.actionButton} onClick={e => copySnippetClick(snippet)} >
+      <button className={styles.actionButton} onClick={() => copySnippetClick(snippet)} >
         <IconCopy />
       </button>
       <button className={styles.actionButton} onClick={() => navigate(`/snippets-form/${snippet.id}`)}>

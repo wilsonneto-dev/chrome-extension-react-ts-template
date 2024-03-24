@@ -1,5 +1,4 @@
 import { ToastProvider } from "../toast/toast-provider.tsx";
-import SnippetsList from "../snippets/pages/snippets-list/snippets-list.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import snippetsRouter from "../snippets/snippets-router.tsx";
 
