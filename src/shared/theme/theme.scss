@@ -1,0 +1,31 @@
+@import 'theme-variables';
+
+:root {
+  font-family: 'Poppins', 'Montserrat', 'Open Sans', 'Roboto', 'Nunito', 'Lato', Arial, sans-serif;
+  background-color: $background;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-main;
+}
+
+#root {
+  max-width: 504px;
+  min-height: 504px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
