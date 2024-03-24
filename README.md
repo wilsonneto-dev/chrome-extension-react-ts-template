@@ -1,8 +1,8 @@
 ## Checklist:
     - Features
+        - [ ] Save store in localStorage
         - [ ] Organize list component
         - [ ] i18n integration
-        - [ ] Save in the localStorage
         - [ ] Publish as web app
         - [ ] extension configuration
         - [ ] save in storage.local (if available)
