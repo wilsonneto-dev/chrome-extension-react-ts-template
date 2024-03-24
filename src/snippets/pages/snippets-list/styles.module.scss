@@ -1,12 +1,5 @@
 @import "src/shared/theme/theme-variables";
-
-@mixin form-field-default {
-  background-color: $form-input-background;
-  color: $color-main;
-  border: 0;
-  outline: none;
-  font-size: 14px;
-}
+@import "src/shared/theme/theme-mixins";
 
 .wrapper {
   display: flex;
@@ -27,7 +20,7 @@
       margin-right: 15px;
     }
 
-    button {
+    .button {
       @include form-field-default;
       width: 56px;
       height: 32px;
@@ -113,21 +106,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease; /* Smooth transition */
+  opacity: 0;
+  transition: opacity 0.3s ease;
   backdrop-filter: blur(1px);
 }
 
-.actionButton {
+.actionButton, a.actionButton {
   display: inline-block;
   margin: 0 10px;
-  border-radius: 50%; /* Circular buttons */
+  border-radius: 50%;
   border: none;
   padding: 16px;
   cursor: pointer;
-  background-color: $background; /* Adjust button color as needed */
-  color: #000; /* Adjust text color as needed */
-  /* Add more styling as needed */
+  background-color: $background;
+  color: #000;
   opacity: 0.8;
   &:hover {
     opacity: 1;

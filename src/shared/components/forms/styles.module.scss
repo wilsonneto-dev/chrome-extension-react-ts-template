@@ -1,0 +1,78 @@
+@import "src/shared/theme/theme-variables";
+@import "src/shared/theme/theme-mixins";
+
+@mixin defaults {
+  margin-bottom: 16px;
+  font-family: 'Poppins', 'Montserrat', 'Open Sans', 'Roboto', 'Nunito', 'Lato', Arial, sans-serif;
+}
+
+.form {
+  padding: 36px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  @include defaults;
+  font-size: 24px;
+  color: $color-main;
+}
+
+.input {
+  @include defaults;
+  @include form-field-default;
+  height: 53px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 14px 24px;
+  font-size: 16px;
+}
+
+.textarea {
+  @include defaults;
+  @include form-field-default;
+  height: 53px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 14px 24px;
+  font-size: 12px;
+  min-height: 223px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 8px;
+
+  .button {
+    @include form-field-default;
+    width: 56px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 26px;
+    font-weight: 100;
+    color: $color-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+
+    &:hover{
+      opacity: 1.0;
+    }
+
+    &.ok {
+      background-color: $color-success;
+    }
+
+    &.cancel {
+      background-color: $color-no-success;
+    }
+
+    svg {
+      color: $color-main;
+    }
+  }
+
+}

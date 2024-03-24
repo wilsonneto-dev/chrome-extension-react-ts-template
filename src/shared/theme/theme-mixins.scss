@@ -1,0 +1,9 @@
+@import "theme-variables";
+
+@mixin form-field-default {
+  background-color: $form-input-background;
+  color: $color-main;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+}
