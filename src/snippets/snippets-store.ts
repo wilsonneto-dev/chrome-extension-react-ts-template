@@ -1,42 +1,52 @@
 import { create } from 'zustand'
 import Snippet from "./models/snippet.ts";
+import LocalStorageSnippetsCollectionRepository from "./persistence/local-storage-snippets-collection-repository.ts";
 
 interface SnippetsState {
-  snippets: Snippet[]
+  snippets: Snippet[],
+  key: string,
   addSnippet: (snippet: Snippet) => void
   updateSnippet: (snippet: Snippet) => void
   removeSnippet: (id: string) => void
 }
 
-const useSnippetsStore = create<SnippetsState>()((set) => ({
-  snippets: [] as Snippet[],
+const _respository = new LocalStorageSnippetsCollectionRepository()
+const defaultKey = "general-snippets"
 
-  addSnippet: (snippet: Snippet) =>
-    set((state) =>
-      ({snippets: [...state.snippets, snippet].sort(sortItemsCompare)})
+const useSnippetsStore = create<SnippetsState>()((set) => {
+  const storedCollection = _respository.get("general-snippets");
+
+  return ({
+    snippets: storedCollection.getSnippets(),
+    key: defaultKey,
+
+    addSnippet: (snippet: Snippet) =>
+      set((state) => {
+          const collection = _respository.get(state.key)
+          collection.add(snippet)
+          _respository.save(collection)
+          return {...state, snippets: collection.getSnippets()}
+        }
+      ),
+
+    updateSnippet: (snippet: Snippet) =>
+      set(state => {
+          const collection = _respository.get(state.key)
+          collection.update(snippet)
+          _respository.save(collection)
+          return {...state, snippets: collection.getSnippets()}
+        }
+      ),
+
+    removeSnippet: (id: string) => set(state => {
+        const collection = _respository.get(state.key)
+        collection.remove(id)
+        _respository.save(collection)
+        return {...state, snippets: collection.getSnippets()}
+      }
     ),
+  })
+})
 
-  updateSnippet: (snippet: Snippet) =>
-    set(state =>
-      ({ snippets: [...state.snippets.filter(s => s.id !== snippet.id), snippet].sort(sortItemsCompare) })
-    ),
-
-  removeSnippet: (id: string) => set(state =>
-    ({ snippets: [...state.snippets.filter(s => s.id !== id)].sort(sortItemsCompare) })
-  ),
-}))
-
-function sortItemsCompare(a: Snippet, b: Snippet) {
-  let titleA = a.title.toUpperCase();
-  let titleB = b.title.toUpperCase();
-
-  if (titleA < titleB)
-    return -1;
-
-  if (titleA > titleB)
-    return 1;
-
-  return 0;
-}
 
 export default useSnippetsStore;

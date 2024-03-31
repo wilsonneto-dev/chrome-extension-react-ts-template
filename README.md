@@ -1,6 +1,6 @@
 ## Checklist:
     - Features
-        - [ ] Save store in localStorage
+        - [x] Save store in localStorage
         - [ ] Organize list component
         - [ ] i18n integration
         - [ ] Publish as web app
