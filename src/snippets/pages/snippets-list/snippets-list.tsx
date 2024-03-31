@@ -1,19 +1,14 @@
 import {useEffect, useState} from "react"
-
 import Snippet from "../../models/snippet.ts"
-import {useToast} from '../../../toast/toast-provider.tsx';
 import useSnippetsStore from "../../snippets-store.ts";
-import {MessageType} from "../../../toast/models/message.ts";
-import IconCopy from "../../icons/icon-copy.tsx";
-import IconEdit from "../../icons/icon-edit.tsx";
-import IconDelete from "../../icons/icon-delete.tsx";
-
 import styles from './styles.module.scss'
-import {Link, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
+import List from "../../components/list/list.tsx";
+import {useTranslation} from "react-i18next";
 
 export default function SnippetsList() {
+  const { t } = useTranslation();
   const snippets = useSnippetsStore(state => state.snippets);
-
   const [searchText, setSearchText] = useState("")
   const [filteredSnippets, setFilteredSnippets] = useState<Snippet[]>([])
 
@@ -26,7 +21,7 @@ export default function SnippetsList() {
   return (
     <div className={styles.wrapper}>
       <header>
-        <input value={searchText} placeholder={"Busca por palavras chaves"} onChange={e => setSearchText(e.currentTarget.value )} />
+        <input value={searchText} placeholder={t('search placeholder')} onChange={e => setSearchText(e.currentTarget.value )} />
         <Link className={styles.button} to="/snippets-form">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
             <path
@@ -41,66 +36,14 @@ export default function SnippetsList() {
   )
 }
 
-function List({ snippets }: { snippets: Snippet[] }) {
-  if(snippets.length == 0)
-    return <NotFoundMessage />
-
-  return (
-    <div className={styles.list}>
-      <h2>Snippets</h2>
-      { snippets?.map(snippet => <Card key={snippet.id} snippet={snippet} />) }
-    </div>
-  )
-}
-
-function Card({ snippet }: { snippet: Snippet }) {
-  const removeSnippet = useSnippetsStore(state => state.removeSnippet);
-  const navigate = useNavigate();
-  const { showToast } = useToast();
-
-  const removeSnippetClick = (id: string) => {
-    removeSnippet(id)
-    showToast("Snippet removido com sucesso", MessageType.Success)
-  }
-
-  const copySnippetClick = (snippet: Snippet) => {
-    navigator.clipboard.writeText(snippet.content).then(() => showToast("Snippet Copied", MessageType.Success))
-  }
-
-  return <div className={styles.card}>
-    <h3>{snippet.title}</h3>
-    <p>{snippet.content}</p>
-
-    <div className={styles.actionLayer}>
-      <button className={styles.actionButton} onClick={() => copySnippetClick(snippet)} >
-        <IconCopy />
-      </button>
-      <button className={styles.actionButton} onClick={() => navigate(`/snippets-form/${snippet.id}`)}>
-        <IconEdit />
-      </button>
-      <button className={styles.actionButton} onClick={_ => removeSnippetClick(snippet.id)}>
-        <IconDelete />
-      </button>
-    </div>
-  </div>
-}
-
 function EmptyMessage() {
-  return (
-    <div className={styles.empty}>
-      <p>
-        Seu espaço para cards está vazio! 😊<br/>
-        Crie seu primeiro card agora e torne seu dia a dia mais simples.
-      </p>
-    </div>
-  )
-}
+  const { t } = useTranslation()
 
-function NotFoundMessage() {
   return (
     <div className={styles.empty}>
       <p>
-        Ops! Parece que não encontramos nenhum card aqui... 😅
+        { t('no snippets') } <br />
+        { t('no snippets advice') }
       </p>
     </div>
   )

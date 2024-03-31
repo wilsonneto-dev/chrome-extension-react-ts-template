@@ -1,0 +1,65 @@
+@import "src/shared/theme/theme-variables";
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background-color: $card-background;
+  border: 1px solid $card-background;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 14px 24px;
+  margin-bottom: 16px;
+
+  &:hover {
+    border-color: #616161;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  p {
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+    color: $color-light;
+  }
+}
+
+.card:hover .actionLayer {
+  opacity: 1; /* Show the layer on hover */
+}
+
+.actionLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(1px);
+}
+
+.actionButton, a.actionButton {
+  display: inline-block;
+  margin: 0 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 16px;
+  cursor: pointer;
+  background-color: $background;
+  color: #000;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}

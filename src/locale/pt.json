@@ -1,0 +1,15 @@
+{
+  "search empty": "Ops! Parece que não encontramos nenhum card aqui... \uD83D\uDE05",
+  "no snippets": "Seu espaço para cards está vazio! \uD83D\uDE0A",
+  "no snippets advice": "Crie seu primeiro card agora e torne seu dia a dia mais simples.",
+  "search placeholder": "Busca por palavras chaves",
+  "snippets": "Recentes",
+  "snippet removed": "Snippet removido com sucesso",
+  "snippet copied": "Snippet copiado!",
+  "snippet updated": "Snippet successfully updated",
+  "snippet created": "Snippet successfully saved",
+  "title placeholder": "Escreva o título aqui",
+  "content placeholder": "Escreva o snippet aqui",
+  "title label": "Título",
+  "content label": "Conteúdo"
+}

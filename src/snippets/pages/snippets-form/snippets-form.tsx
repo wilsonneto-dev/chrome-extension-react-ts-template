@@ -6,6 +6,7 @@ import Snippet from "../../models/snippet.ts";
 import {useToast} from "../../../toast/toast-provider.tsx";
 import {MessageType} from "../../../toast/models/message.ts";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export function SnippetsForm() {
   const { id } = useParams<{ id: string }>()
@@ -16,27 +17,28 @@ export function SnippetsForm() {
   const navigate = useNavigate()
   const addSnippetToStore = useSnippetsStore(state => state.addSnippet)
   const updateSnippetToStore = useSnippetsStore(state => state.updateSnippet)
-  const { showToast } = useToast();
+  const { showToast } = useToast()
+  const { t } = useTranslation()
 
   const addOrUpdateSnippetClick = () => {
     if (snippet) {
       const updated = { ...snippet, title, content };
       console.log(updated)
       updateSnippetToStore(updated);
-      showToast("Snippet successfully updated", MessageType.Success);
+      showToast(t('snippet updated'), MessageType.Success);
     } else {
       addSnippetToStore(new Snippet(title, content));
-      showToast("Snippet successfully saved", MessageType.Success);
+      showToast(t('snippet created'), MessageType.Success);
     }
     navigate("/")
   }
 
   return (
     <Form>
-      <Label>Título</Label>
-      <Input value={title} onChange={setTitle} placeholder={"Escreva o título aqui"} />
-      <Label>Descrição</Label>
-      <TextArea value={content} onChange={setContent}  placeholder={"Escreva sua descrição aqui"}></TextArea>
+      <Label>{t('title label')}</Label>
+      <Input value={title} onChange={setTitle} placeholder={ t('title placeholder') } />
+      <Label>{t('content label')}</Label>
+      <TextArea value={content} onChange={setContent}  placeholder={ t('content placeholder') }></TextArea>
       <ButtonsWrapper>
         <CancelButton onClick={() => navigate("/")} />
         <OkButton onClick={() => addOrUpdateSnippetClick()} />

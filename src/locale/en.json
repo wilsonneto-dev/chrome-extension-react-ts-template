@@ -1,0 +1,15 @@
+{
+  "search empty": "Oops! Looks like we didn't find any cards here... 😅",
+  "no snippets": "Your card space is empty! 😊",
+  "no snippets advice": "Create your first card now and make your day-to-day simpler.",
+  "search placeholder": "Search by keywords",
+  "snippets": "Snippets",
+  "snippet removed": "Snippet successfully removed",
+  "snippet copied": "Snippet copied!",
+  "snippet updated": "Snippet successfully updated",
+  "snippet created": "Snippet successfully saved",
+  "title placeholder": "Write the title here",
+  "content placeholder": "Write the content here",
+  "title label": "Title",
+  "content label": "Snippet"
+}

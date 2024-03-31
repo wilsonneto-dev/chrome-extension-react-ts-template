@@ -1,6 +1,6 @@
 import SnippetsCollection from "./snippets-collection.ts";
 
 export default interface ISnippetsCollectionRepository {
-  save(collection : SnippetsCollection)
-  get(key: string)
+  save(collection : SnippetsCollection): void
+  get(key: string): SnippetsCollection
 }
