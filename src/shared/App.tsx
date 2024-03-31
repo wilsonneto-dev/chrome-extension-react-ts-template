@@ -7,6 +7,8 @@ const router = createBrowserRouter([
   ...snippetsRouter
 ]);
 
+console.log(location.href)
+
 function App() {
   return (
     <ToastProvider>

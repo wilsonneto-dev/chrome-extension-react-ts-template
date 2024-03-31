@@ -15,5 +15,9 @@ export default [
     path: "/snippets-form/:id",
     element: <SnippetsForm />
   },
+  {
+    path: "*",
+    element: <SnippetsList />
+  }
 ] as RouteObject[]
 
