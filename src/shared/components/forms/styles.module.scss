@@ -29,6 +29,7 @@
 }
 
 .textarea {
+  @include styled-scroll;
   @include defaults;
   @include form-field-default;
   height: 53px;
@@ -36,11 +37,17 @@
   border-radius: 16px;
   padding: 14px 24px;
   font-size: 12px;
+  min-height: 223px;
+  overflow-x: hidden;
+  resize: none;
+
   @media only screen and (max-width: 600px) {
     font-size: 16px;
   }
-  min-height: 223px;
-  overflow-x: hidden;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #212d36;
+  }
 }
 
 .buttons {

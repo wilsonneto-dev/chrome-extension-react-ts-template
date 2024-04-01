@@ -14,7 +14,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #263741;
+    background-color: $card-background;
     width: 4px;
     border-radius: 5px;
   }
