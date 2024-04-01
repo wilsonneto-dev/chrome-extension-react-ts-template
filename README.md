@@ -5,6 +5,6 @@
         - [x] i18n integration
         - [x] Publish as web app
         - [x] extension configuration
-        - [ ] Scroll only in the snippets space
+        - [x] Scroll only in the snippets space
         - [ ] publish in chrome store
     - Fixes
