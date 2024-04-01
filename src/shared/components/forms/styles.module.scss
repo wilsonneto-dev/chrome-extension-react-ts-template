@@ -36,7 +36,11 @@
   border-radius: 16px;
   padding: 14px 24px;
   font-size: 12px;
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
   min-height: 223px;
+  overflow-x: hidden;
 }
 
 .buttons {

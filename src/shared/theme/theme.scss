@@ -1,4 +1,6 @@
 @import 'theme-variables';
+@import 'theme-mixins';
+
 
 :root {
   font-family: 'Poppins', 'Montserrat', 'Open Sans', 'Roboto', 'Nunito', 'Lato', Arial, sans-serif;
@@ -19,6 +21,7 @@
 }
 
 body {
+  @include styled-scroll;
   margin: 0 auto;
   padding: 0;
   width: 504px;
@@ -48,3 +51,4 @@ a {
     height: 100vh;
   }
 }
+

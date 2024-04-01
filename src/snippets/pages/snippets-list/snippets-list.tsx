@@ -30,8 +30,9 @@ export default function SnippetsList() {
           </svg>
         </Link>
       </header>
-
-      { (snippets.length == 0) ? <EmptyMessage /> : <List snippets={filteredSnippets} /> }
+      <div className={styles.scroll}>
+        { (snippets.length == 0) ? <EmptyMessage /> : <List snippets={filteredSnippets} /> }
+      </div>
     </div>
   )
 }
